@@ -1,0 +1,91 @@
+\documentclass[11pt,twoside,a4paper]{article}
+
+\usepackage{hyperref}
+\usepackage{fixltx2e}
+\usepackage{amsmath}
+
+% \textsubscript{}
+% \textsuperscript{}
+
+\begin{document}
+  
+  \title{Database Systems \\Revision Notes}
+  \author{Guy Taylor}
+  \date{April 2011}
+  
+  \maketitle
+  
+  \tableofcontents
+  
+  \clearpage
+  
+  \section{Introduction}
+    This document is a set of revision notes for the Database Systems \cite{dbs_home} course at the Univerisy of Edinbugh.
+  
+  \clearpage
+  \section{Relational Algebra}
+    Relatinal algebra is syntax and set of rules that allows mathimatical like operations to be applied to a relatinal database.
+    
+    \subsection{Selection}
+      Selection ($\sigma$) is a method simmilar to SELECT in SQL. It allows a data set to be filtered by a, or several, logical exspresions.
+    
+      \begin{tabular}{lcr}
+        % start left
+      	\begin{tabular}{l|l|l}
+      		Name & Age & Sex \\
+      		\hline
+      		Bob  & 22  & M \\
+      		Bill & 32  & M \\
+      		Ben  & 42  & F \scriptsize{(dont ask)}\\
+      	\end{tabular}
+        % end left
+      	&
+      	% start center
+      	$ \sigma_{(age > 30)}(People) = $
+      	% end center
+      	&
+      	% start right
+      	\begin{tabular}{c|l|c}
+      		Name & Age & Sex \\
+      		\hline
+      		Bill & 32  & M \\
+      		Ben  & 42  & F \\
+      	\end{tabular}
+      	% end right
+      \end{tabular}
+    
+    \subsection{Projection}
+      Projection ($\mathrm{\pi}$) us a method to filter colums out of a data set.
+      
+      \begin{tabular}{lcr}
+        % start left
+      	\begin{tabular}{l|l|l}
+      		Name & Age & Sex \\
+      		\hline
+      		Bob  & 22  & M \\
+      		Bill & 32  & M \\
+      		Ben  & 42  & F \scriptsize{(dont ask)}\\
+      	\end{tabular}
+        % end left
+      	&
+      	% start center
+      	$ \pi_{(name,age)}(People) = $
+      	% end center
+      	&
+      	% start right
+      	\begin{tabular}{c|l|c}
+      		Name & Age \\
+      		\hline
+      		Bill & 32\\
+      		Ben  & 42\\
+      	\end{tabular}
+      	% end right
+      \end{tabular}
+  
+  \clearpage
+  % \addcontentsline{toc}{chapter}{Bibliography}
+  
+  \bibliography{main}
+  \bibliographystyle{apalike}
+
+\end{document}
