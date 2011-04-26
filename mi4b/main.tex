@@ -1,12 +1,13 @@
 \documentclass[11pt,twoside,a4paper]{article}
 
-\usepackage{hyperref}
+\usepackage{url}
 \usepackage{fixltx2e}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{multicol}
+\usepackage{listings}
 
 % \textsubscript{}
 % \textsuperscript{}
@@ -23,14 +24,13 @@
   
   \tableofcontents
   
-  \clearpage
-  
   \section{Introduction}
     This document is a set of revision notes for the Geomatry for Informatics course at the Univerisy of Edinbugh.
   
   \clearpage
   \section{Mapping}
-    If a matrix is arthoginal in \(\mathbb{R}^3\) on can show that \(MM^T = I\) then:
+    \subsection{Matrix}
+      If a matrix is arthoginal in \(\mathbb{R}^3\) on can show that \(MM^T = I\) then:
       \begin{description}
         \item[If \(det(m) = 1\)] \hfill \\
           This ia a rotation around some line \(L \in \mathbb{R}^3\) that passes through \(0 (0,0,0)\) at angle \(\alpha\).
@@ -40,14 +40,81 @@
         \item[If \(det(m) = -1\)] \hfill \\
           This is a reflection in a plane.
       \end{description}
-    
+  
+  \section{Shapes}
     \begin{tabular}{l|l|l}
-      \(x^2+y^2+z^2=1\) & Sphere      & \includegraphics[width=2cm]{Sphere_wireframe_10deg_6r} \\ \hline
-      \(x^2+y^2=z^2\)   & Conic       & \includegraphics[width=2cm]{DoubleCone} \\ \hline
-      \(x^2+y^2=z\)     & Poraboloid  & \includegraphics[width=2cm]{Paraboloid_of_Revolution}  \\
+      \textbf{Example}  & \textbf{Name} & \textbf{Visual Representation} \\ \hline
+      \(x^2+y^2+z^2=1\) & Sphere        & \includegraphics[width=2cm]{MSP195419f85bd4320b17g400004245ieica2347c33}\cite{sphere_graphic} \\
+      \(x^2+y^2=z^2\)   & Conic         & \includegraphics[width=2cm]{DoubleCone} \\
+      \(x^2+y^2=z\)     & Poraboloid    & \includegraphics[width=2cm]{Paraboloid_of_Revolution}  \\
     \end{tabular}
     
-    \subsection{Example}
+    \subsection{Types}
+      \begin{description}
+        \item[Ellipse] \hfill \\
+          \[ \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \]
+        
+        \item[Hyperbola] \hfill \\
+          \[ \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1 \]
+        
+        \item[Parabola] \hfill \\
+          \[ y^2 = 4ax \]
+        
+        \item[Other] \hfill \\
+          \begin{tabular}{l|l|l}
+            Union of two line &                          & \(  \)       \\ % TODO
+            Line              & Shortest distance between two points & \( y=Mx+c \) \\
+            Point             & A zero dimensinal object & \( (x,y) \)  \\
+            Empty             & Nothing                  & \( \{\} \)   \\
+          \end{tabular}
+      \end{description}
+    
+    \subsection{Generalisation}
+      \[ Ax^2 + Bxy^2 + Cy^2 + Dx^2 + F = 0 \]
+      or
+      \[
+        \begin{bmatrix} x & y \end{bmatrix}
+        \begin{bmatrix}
+          A           & \frac{B}{2} \\[0.3em]
+          \frac{B}{2} & C
+        \end{bmatrix}
+        \begin{bmatrix} x \\ y \end{bmatrix}
+        +
+        \begin{bmatrix} x & y \end{bmatrix}
+        \begin{bmatrix} D \\ E \end{bmatrix}
+        + F = 0
+      \]
+    
+    \subsection{Idetification}
+      \[
+        N =
+          \begin{bmatrix}
+            A           & \frac{B}{2} & \frac{D}{2} \\[0.3em]
+            \frac{B}{2} & C           & \frac{E}{2} \\[0.3em]
+            \frac{D}{2} & \frac{E}{2} & F           \\
+          \end{bmatrix}
+        M =
+          \begin{bmatrix}
+            A           & \frac{B}{2} \\[0.3em]
+            \frac{B}{2} & C
+          \end{bmatrix}
+      \]
+      \begin{description}
+        \item[Ellipse] \hfill \\
+          \( 4AC - B^2 > 0 \) and \( det(N)(A+C) < 0 \)
+        
+        \item[Hyperbola] \hfill \\
+          \( 4AC - B^2 < 0 \) and \( det(N) \neq 0 \)
+        
+        \item[Ellipse] \hfill \\
+          \( 4AC - B^2 = 0 \) and \( det(N) \neq 0 \)
+      \end{description}
+  
+  \clearpage
+  \section{Examples}
+  
+    \subsection{Example 1}
+      \label{Example 1}
       Note: Simmilar to assignment
       \begin{description}
         \item[Question] \hfill \\
@@ -77,7 +144,7 @@
           \(
             \alpha(2a+2b-2c)+\alpha^2(a^2+b^2-c^2) = 0 \\
           \)
-            \\ Divide by \alpha \\
+            \\ Divide by \(\alpha\) \\
           \(
             (2a+2b-2c) = 0 or (a^2+b^2-c^2) = 0 \\
           \)
@@ -87,17 +154,15 @@
             1+b^2-c^2 = 0 and 1+b-c=0 \\
             b=0 and c=1 \\
           \)
-            \\ Form to a equation \\
+            \\ Form to a equation \\ (are intial point and are new derived point) \\
           \(
-            (1,1,1) + \alpha(1,0,1) \) (are intial point and are new derived point) \\
-          
-            \\ when a = 0 \\
-          \(
-            (1,1,1) + \alpha(0,1,1) = :??
+            \underline{(1,1,1) + \alpha(1,0,1)}
           \)
         %\end{multicols}
       \end{description}
+  
   \clearpage
+  \bibliographystyle{plain}
   \bibliography{main}
 
 \end{document}
