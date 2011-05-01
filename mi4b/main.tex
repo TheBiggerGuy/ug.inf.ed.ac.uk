@@ -8,6 +8,7 @@
 \usepackage{amssymb}
 \usepackage{multicol}
 \usepackage{listings}
+\usepackage{mdwlist}
 
 % \textsubscript{}
 % \textsuperscript{}
@@ -114,7 +115,7 @@
   \section{Examples}
   
     \subsection{Example 1}
-      \label{Example 1}
+      \label{Example_1_1}
       Note: Simmilar to assignment
       \begin{description}
         \item[Question] \hfill \\
@@ -162,7 +163,48 @@
       \end{description}
   
   \clearpage
-  \bibliographystyle{plain}
-  \bibliography{main}
-
+  \section{Matrix and Vector}
+    \subsection{Matrix}
+      TODO
+    
+    \subsection{Vector}
+      TODO
+    
+    \subsection{Mix}
+      \begin{tabular}{ll}
+        \textbf{Orthoginal}    & $ a \cdot b = 1 $ \\ \\
+        \textbf{Parrallel}     & $ a \cdot b = 0 $ \\ \\
+        \textbf{Cross Product} & $
+          \begin{vmatrix}
+            i   & j   & k   \\
+        	  a_1 & a_2 & a_3 \\
+        	  b_1 & b_2 & b_3 \\
+        	\end{vmatrix} $ \\ \\
+        \textbf{Dot Product}   & $ (a_1xb_1) + (a_2xb_2) + (a_2xb_2) $ \\ \\
+        \textbf{Angle}         & $ cos(\theta) = \frac{a \cdot b}{|a||b|} $ \\ \\
+        \textbf{Determinate}   & $ \begin{vmatrix} a & b \\ c & d \end{vmatrix} = ad - bc $ \\ \\
+        \textbf{Determinate}   & $
+        	  \begin{vmatrix}
+        	    a & b & c \\
+        	    d & e & f \\
+        	    g & h & i \\
+        	  \end{vmatrix}
+        	  =
+        	  \begin{matrix}
+        	    a & b & c & \nearrow \\
+        	    d & e & f & \nearrow & Y \\
+        	    g & h & i & \nearrow \\
+        	    a & b & c & \searrow \\
+        	    d & e & f & \searrow & X \\
+        	    g & h & i & \searrow \\
+        	  \end{matrix}
+        	  X-Y $ \\ \\        	
+        \end{tabular}
+  
+  \clearpage  
+  \begin{thebibliography}{9}
+    \bibitem{sphere_graphic}
+        "Sphere Graphic", Author="Wolfram|Alpha", Publisher"Wolfram Alpha LLC", Accessed="26-April-2011", Year="2011", "\url{http://www.wolframalpha.com/input/?i=x^2%2By^2%2Bz^2%3D1}"
+  \end{thebibliography}
+    
 \end{document}
