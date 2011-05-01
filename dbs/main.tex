@@ -20,7 +20,7 @@
   \clearpage
   
   \section{Introduction}
-    This document is a set of revision notes for the Database Systems \cite{dbs_home} course at the Univerisy of Edinbugh.
+    This document is a set of revision notes for the Database Systems\textsuperscript{\cite{dbs_home}} course at the Univerisy of Edinbugh.
   
   \clearpage
   \section{Relational Algebra}
@@ -36,12 +36,12 @@
       		\hline
       		Bob  & 22  & M \\
       		Bill & 32  & M \\
-      		Ben  & 42  & F \scriptsize{(dont ask)}\\
+      		Ben  & 42  & F\textsuperscript{\cite{dont_ask}}\\
       	\end{tabular}
         % end left
       	&
       	% start center
-      	$ \sigma_{(age > 30)}(People) = $
+      	$ \sigma_{(age > 30)}(People) $
       	% end center
       	&
       	% start right
@@ -64,12 +64,12 @@
       		\hline
       		Bob  & 22  & M \\
       		Bill & 32  & M \\
-      		Ben  & 42  & F \scriptsize{(dont ask)}\\
+      		Ben  & 42  & F \\
       	\end{tabular}
         % end left
       	&
       	% start center
-      	$ \pi_{(name,age)}(People) = $
+      	$ \pi_{(name,age)}(People) $
       	% end center
       	&
       	% start right
@@ -81,11 +81,61 @@
       	\end{tabular}
       	% end right
       \end{tabular}
+    
+    \clearpage
+    \section{SQL}
+    	\subsection{Create}
+    	  \begin{tabbing}
+    	    CREATE \= TABLE \emph{table1}\\
+    	    \>(                           \\
+      		\>\emph{name1} \emph{type1},  \\
+      		\>\emph{name2} \emph{type2},  \\
+      		\>\emph{name3} \emph{type3},  \\
+      		\>\emph{name4} \emph{type4},  \\
+      		\>PRIMARY KEY (\emph{name1}), \\
+      		\>FOREIGN KEY (\emph{name2}) REFERENCES \emph{table2} (\emph{name1}) \\
+      		\>);
+      	\end{tabbing}
+     
+     \subsection{Select}
+    	  \begin{tabbing}
+    	    SELECT \= \\
+    	    \>name1, name2                \\
+    	    FROM                          \\
+    	    \>table1                      \\
+    	    WHERE                         \\
+    	    \>name1 = name3               \\
+      		;
+      	\end{tabbing}
+    
+    \subsection{Insert}
+    	  \begin{tabbing}
+    	    INSTER \= INTO                \\
+    	    \>table1 (name1, name2)       \\
+    	    VALUES                        \\
+    	    \>(value1, value2)            \\
+      		;
+      	\end{tabbing}
+     
+     \subsection{Update}
+    	  \begin{tabbing}
+    	    UPDATE \=                    \\
+    	    \>table1                      \\
+    	    SET                           \\
+    	    \>name1=value1, name2=value2  \\
+    	    WHERE                         \\
+    	    \>name3 = value3              \\
+      		;
+      	\end{tabbing}
+    		  
   
-  \clearpage
-  % \addcontentsline{toc}{chapter}{Bibliography}
-  
-  \bibliography{main}
-  \bibliographystyle{apalike}
+  \clearpage  
+  \begin{thebibliography}{9}
+    \bibitem{dbs_home}
+      "Database Systems Home page" by "Peter Buneman" \\
+      "\url{http://homepages.inf.ed.ac.uk/opb/dbs/}"
+    \bibitem{dont_ask}
+      Dont ask
+  \end{thebibliography}
 
 \end{document}
