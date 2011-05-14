@@ -1,5 +1,7 @@
 \documentclass[11pt,twoside,a4paper]{article}
 
+\usepackage{hyperref}
+
 \begin{document}
   
   \title{Computer Security \\Revision Notes}
@@ -12,5 +14,50 @@
   
   \section{Introduction}
     This document is a set of revision notes for the Computer Security \cite{cs_home} course at the Univerisy of Edinbugh.
+  
+  \clearpage
+  \begin{section}{Malises Progams}
+    Malware is common
+      
+      \begin{subsection}{Trojan \emph{Horse}}
+        A program that acts beinie such as a game or utility which actualy runs malisshus code while in use as the macerading program.
+      \end{subsection}
+      
+      \begin{subsection}{Virus}
+        A program that hides within a normaly unexecutable file (eg pictures, word documents....) that when opened (including previewd by a file manager) causes the parent applicatyion to run malichious code.
+      \end{subsection}
+      
+      \begin{subsection}{Worm}
+        A self-replication aplication. The application will try to copy itself over a network or on phisical media (ie USB drives and CDs)
+      \end{subsection}
+      
+      \begin{subsection}{Rootkit}
+        A program that embeds itself within the Operating System. This allows it to intersept File System calls to hide itself and apply other coutermesures. These programs are hard to remove as they operate at a lower or simmilar level to Ant-virus scanners.
+      \end{subsection}
+      
+      \begin{subsection}{Loggers}
+        Keyloggers and Screenloggers record all screen or keyboard movements. They can include filters so sensative information such as X many keys before and after a credit card (x meany numeric digits). This information is then sent back to a location to be prossesed and missued.
+      \end{subsection}
+      
+      \begin{subsection}{Web Trojan}
+        bob
+      \end{subsection}
+      
+      Note: The random term "Crimeware" was used in the lecture notes with only a subsection of the above. All can be used to good or evil so all are "crimeware" if they are used for crime ...
+  
+  \end{section}
+  
+  \clearpage
+  
+  \begin{section}{Phishing and Spoofing}
+    TODO
+  \end{section}
+  
+  \clearpage  
+  
+  \begin{thebibliography}{9}
+    \bibitem{cs_home}
+      "Computer Security" "\url{http://www.inf.ed.ac.uk/teaching/courses/cs/}"
+  \end{thebibliography}
 
 \end{document}
