@@ -16,6 +16,39 @@
     This document is a set of revision notes for the Computer Security \cite{cs_home} course at the Univerisy of Edinbugh.
   
   \clearpage
+  
+  \begin{section}{Terminology}
+    Main buzz words
+    \begin{description}
+      \item[Cryptography] The secret writing with \emph{ciphers}
+      \item[Cryptanalysis] Breaking ciphers
+      \item[Cryptology] Both the above
+      \item[Encryption] Converting \emph{plain text} to \emph{cipher text}
+      \item[Decryption] Converting \emph{cipher text} to \emph{plain text}
+      \item[Encryption Scheme, Cipher, Cryptosystem] Mechansisums for encryption and decription
+    \end{description}
+    
+    What is security for
+    \begin{description}
+      \item[Confidentiality] No agent other than the thows with permision can view the content
+      \item[Integrity] The data recived is in fact the data sent
+      \item[Authentication] I am who I say I am
+      \item[Non-Repudiation] Layered security. Agents with insefisient rights cannot do sertaint things.
+    \end{description}
+    
+    
+    Primitives
+    \begin{description}
+      \item[Plain Text] The unencripted message
+      \item[Plain Text] The encripted message
+      \item[Key] The secret that needs to be know to encrypt or decrypt a message
+      \item[Hash] A \emph{one-way} function. Used so help prevent realeasing the real key.
+    \end{description}
+    
+  \end{section}
+  
+  \clearpage
+  
   \begin{section}{Malises Progams}
     Malware is common
       
