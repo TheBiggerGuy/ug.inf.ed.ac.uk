@@ -127,6 +127,17 @@
     	    \>name3 = value3              \\
       		;
       	\end{tabbing}
+     
+     \subsection{Types}
+      A subsection of the SQL data types\textsuperscript{\cite{postgres_data_types}}.
+      \begin{description}
+        \item[varchar\emph{[(size)]}] A varible sized string. May have defined max length \emph{size}.
+        \item[text] A varible sized string.
+        \item[bool] Booean True/False.
+        \item[integer] A non-decimal number with \emph{size} digits.
+        \item[date] Date in "YYYY-MM-DD"
+        \item[timestamp] Date and time to second acurecy "YYYY-MM-DD HH:MM:SS"
+      \end{description}
     		  
   
   \clearpage  
@@ -136,6 +147,8 @@
       "\url{http://homepages.inf.ed.ac.uk/opb/dbs/}"
     \bibitem{dont_ask}
       Dont ask
+    \bibitem{postgres_data_types}
+      Specificaly PostgreSQL "\url{http://www.postgresql.org/docs/9.0/static/datatype.html}"
   \end{thebibliography}
 
 \end{document}
