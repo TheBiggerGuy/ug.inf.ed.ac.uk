@@ -1,5 +1,7 @@
 \documentclass[11pt,twoside,a4paper]{article}
 
+\usepackage{hyperref}
+
 \begin{document}
   
   \title{Compiling Techniques \\Revision Notes}
@@ -11,7 +13,7 @@
   \tableofcontents
   
   \section{Introduction}
-    This document is a set of revision notes for the Compiling Techniques \cite{ct_home} course at the Univerisy of Edinbugh.
+    This document is a set of revision notes for the Compiling Techniques\textsuperscript{\cite{ct_home}} course at the Univerisy of Edinbugh.
   
   \clearpage
   \section{Parsing}
@@ -47,7 +49,9 @@
         Note: Although the language is contex free we use DFA (D.. Finite Atomata) to prosses it as it is only done 'line by line'.
   
   \clearpage  
-  \bibliography{main}
-  \bibliographystyle{apalike}
+  \begin{thebibliography}{9}
+    \bibitem{ct_home}
+      "Compiler Techinques Home page" by "Björn Franke", "\url{http://www.inf.ed.ac.uk/teaching/courses/ct/}"
+  \end{thebibliography}
 
 \end{document}
