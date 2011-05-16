@@ -1,16 +1,13 @@
 import curses
+import wrapper
 from time import sleep
 
 class Uicli(object):
   
-  __screen = None
-  
-  def __init__(self):
-    self.__screen = curses.initscr()
-    self.__screen.keypad(1)
-    curses.noecho()
-    curses.cbreak()
-    #curses.wrapper.wrapper(
+  def __init__(self, screen):
+    self.__screen = screen
+    self.__screen.nodelay(True)
+    self._running = True
   
   def refresh(self, lastNum, rand, white):
     self.__screen.clear()
@@ -33,19 +30,30 @@ class Uicli(object):
                         )
     self.__screen.addstr(10, 2, "Efficency")
     self.__screen.addstr(11, 8, "{per:<15}%".format(per=(white.getTotal()/(rand.getTotal()+0.0))*100))
+    
+    self.__screen.addstr(15, 2, "Q - Quit")
     self.__screen.refresh()
+    
+    try:
+      if self.__screen.getkey() in ["Q", "q"]:
+        self._running = False
+    except curses.error:
+      pass
+  
+  def isRunning(self):
+    return self._running
   
   def __del__(self):
     self.__screen.clear()
-    #curses.endwin()
+    self._running = False
 
 class RandomWithStats(object):
-  __zeroCount = 0
-  __oneCount  = 0
-  _sqew      = 0
   
-  def __init__(self, sqew=64):
+  def __init__(self, sqew):
     self._sqew = sqew
+    
+    self.__zeroCount = 0
+    self.__oneCount  = 0
   
   def getBool(self):
     pass
@@ -67,8 +75,6 @@ class RandomWithStats(object):
 
 class Urandom(RandomWithStats):
   
-  _dev = None
-  
   def __init__(self, sqew=64):
     RandomWithStats.__init__(self, sqew=sqew)
     self._dev = open("/dev/urandom", mode="r")
@@ -88,17 +94,16 @@ class Urandom(RandomWithStats):
 
 class Whitening(RandomWithStats):
   
-  _rand = None
-  _lastBytes = (0, 0)
-    
   def __init__(self, rand):
+    RandomWithStats.__init__(self, sqew=0)
     self._rand = rand
+    self._lastBytes = (0, 0)
   
   def getBool(self):
     n1 = n2 = 0
     while n1 == n2:
-      n1 = rand.getBool()
-      n2 = rand.getBool()
+      n1 = self._rand.getBool()
+      n2 = self._rand.getBool()
     self._lastBytes = n1, n2
     if n1 == 1:
       self._incOne()
@@ -110,15 +115,18 @@ class Whitening(RandomWithStats):
   def getLastBytes(self):
     return self._lastBytes
 
-rand  = Urandom()
-white = Whitening(rand)
-sreen = Uicli()
+def main(screen):
+  rand  = Urandom()
+  white = Whitening(rand)
+  ui = Uicli(screen)
 
-zeroCount = 0
-oneCount = 0
-while True:
-  byte = white.getBool()
-  sreen.refresh(byte, rand, white)
-  sleep(0.05)
+  zeroCount = 0
+  oneCount = 0
+  while ui.isRunning():
+    byte = white.getBool()
+    ui.refresh(byte, rand, white)
+    sleep(0.05)
 
-curses.endwin()
+if __name__ == "__main__":
+  wrapper.wrapper(main)
+
