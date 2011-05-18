@@ -11,14 +11,14 @@ all: ug2 ug3
 ug2: mi4b
 	echo "	Making all UG2"
 
-ug3: car ct cs dbs
+ug3: car ct cs st dbs
 	echo "	Making all UG3"
 
 mi4b:
 	echo "		Making mi4b"
 	cd ug2/mi4b; \
 	cat main.tex | sed -e "s/"$(VERSION_REP)"/"$(VERSION)"/g" | $(LATEX) $(LATEXFLAGS);\
-	mv main.pdf mi4b.pdf
+	mv texput.pdf mi4b.pdf
 
 car:
 	echo "		Making car"
@@ -30,16 +30,22 @@ ct:
 	echo "		Making ct"
 	cd ug3/ct; \
 	cat main.tex | sed -e "s/"$(VERSION_REP)"/"$(VERSION)"/g" | $(LATEX) $(LATEXFLAGS);\
-	mv main.pdf ct.pdf
+	mv texput.pdf ct.pdf
 
 cs:
 	echo "		Making cs"
 	cd ug3/cs; \
 	cat main.tex | sed -e "s/"$(VERSION_REP)"/"$(VERSION)"/g" | $(LATEX) $(LATEXFLAGS);\
-	mv main.pdf cs.pdf
+	mv texput.pdf cs.pdf
+
+st:
+	echo "		Making st"
+	cd ug3/st; \
+	cat main.tex | sed -e "s/"$(VERSION_REP)"/"$(VERSION)"/g" | $(LATEX) $(LATEXFLAGS);\
+	mv texput.pdf st.pdf
 
 dbs:
 	echo "		Making dbs"
 	cd ug3/dbs; \
 	cat main.tex | sed -e "s/"$(VERSION_REP)"/"$(VERSION)"/g" | $(LATEX) $(LATEXFLAGS);\
-	mv main.pdf dbs.pdf
+	mv texput.pdf dbs.pdf
